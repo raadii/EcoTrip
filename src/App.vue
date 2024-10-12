@@ -117,7 +117,7 @@ async function getCarbonFootprint() {
     );
 
     // Update carbon footprint from the API response
-    carbonFootprint.value = response.data.carbonFootprint; // Adjust based on the actual API response structure
+    carbonFootprint.value = response.data.carbonEquivalent; // Adjust based on the actual API response structure
     console.log("Carbon Footprint:", carbonFootprint.value);
   } catch (error) {
     console.error("Error fetching carbon footprint:", error);

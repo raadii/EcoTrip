@@ -21,8 +21,10 @@
       <!-- Div1: Form and Map Section -->
       <div id="div1" class="form-map-container">
         <div class="form-container">
-          <h1>Calculate Your Travel Impact</h1>
-          <h3>Track your carbon footprint and make greener travel choices</h3>
+          <h1 class="calc-title">Calculate Your Travel Impact</h1>
+          <h3 class="calc-subtitle">
+            Track your carbon footprint and make greener travel choices
+          </h3>
 
           <form @submit.prevent="getCarbonFootprint">
             <div class="grid-container">
@@ -138,14 +140,23 @@
 
       <!-- Div2: Output Section -->
       <div id="div2" class="output-container">
-        <div v-if="carbonFootprint">
-          <h3>Your Carbon Footprint is {{ carbonFootprint }} kg CO₂</h3>
-          <!-- <p>{{ carbonFootprint }} kg CO₂</p> -->
-        </div>
-        <div v-if="trees">
-          <h1>That is equivilant to {{ trees }} trees!</h1>
-          <!-- <p>{{ trees }} trees</p> -->
-        </div>
+        <!-- Carbon Footprint Section -->
+        <h3>
+          Your Carbon Footprint is
+          <span v-if="carbonFootprint">{{ carbonFootprint.toFixed(2) }}</span>
+          <span v-else>___</span>
+          <!-- Placeholder when the value is not calculated yet -->
+          kg CO₂
+        </h3>
+
+        <!-- Trees Equivalent Section -->
+        <h1>
+          That is equivalent to
+          <span v-if="trees">{{ trees.toFixed(2) }}</span>
+          <span v-else>___</span>
+          <!-- Placeholder for trees -->
+          trees!
+        </h1>
       </div>
     </div>
   </div>
@@ -350,7 +361,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 50px;
 }
 .main-container2 {
   display: flex;
@@ -387,6 +398,16 @@ onMounted(() => {
   align-items: center;
 }
 
+.calc-title {
+  color: white;
+  text-align: left;
+}
+.calc-subtitle {
+  color: white;
+  text-align: left;
+  font-size: 1.5rem;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columns */
@@ -396,14 +417,15 @@ onMounted(() => {
 .grid-item input,
 select {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   background-color: #bbdfa3;
   border: none;
   border-radius: 10px;
+  font-size: 1.2rem;
 }
 
 .calc-button {
-  margin-top: 10px;
+  margin-top: 30px;
   padding: 20px 30px;
   background-color: #ffffff;
   border: none;

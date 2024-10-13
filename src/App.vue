@@ -7,7 +7,7 @@
     <h2 class="subtitle">Travel more green</h2>
     <p class="subtitle2">
       Enter origin, destination, and vehicle information <br />
-      to calculate carbon footprint of trip
+      to calculate <span class="carbon_footprint_subtitle2">carbon footprint</span> of trip
     </p>
     <button @click="scrollToCalculation" class="scroll-button">
       Calculate
@@ -289,7 +289,7 @@ html {
   padding: 50px 0;
 }
 .hero-section {
-  background-color: #e9edc9;
+  background: linear-gradient(#EBEED6, #CCE6BB);
   width: 100vw;
   min-height: 100vh;
   display: flex;
@@ -317,31 +317,41 @@ html {
 }
 
 .main-title {
-  font-size: 90px;
+  font-size: 100px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: -35px;
 }
 
 .subtitle {
   color: #5d9835;
-  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 30px;
 }
 
 .subtitle2 {
   font-family: "Ropa Sans", sans-serif;
-  font-size: 45px;
+  font-size: 30px;
   color: #c5803d;
+  line-height: 1.5;
+}
+
+.carbon_footprint_subtitle2 {
+  color: #5d9835;
 }
 
 .scroll-button {
-  background-color: #c5803d;
+  background: linear-gradient(to right,#BE7F41, #583B1E);
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 80px;
   font-size: 20px;
-  margin-top: 20px;
+  margin-top: 40px;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 10px;
+}
+
+.scroll-button:hover {
+  background: linear-gradient(to right,#754f29, #432d18);
 }
 
 .grid-container {
@@ -356,15 +366,14 @@ html {
   flex-direction: column;
 }
 .calc-section {
-  background: linear-gradient(180deg, #cce6bb 0%, #bbdfa3 100%);
+  background: linear-gradient(#CCE6BB, #BBDFA3);
   width: 100vw;
-  height: auto;
-  display: flex;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   padding: 50px;
 }
-.main-container2 {
+.sub-container2 {
   display: flex;
   flex-direction: column;
   width: 85vw;

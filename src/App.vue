@@ -285,6 +285,9 @@ onMounted(() => {
 </script>
 
 <style scoped>
+html {
+  padding: 50px 0;
+}
 .hero-section {
   background-color: #e9edc9;
   width: 100vw;

@@ -126,7 +126,7 @@
                 />
               </div>
             </div>
-            <div id="map"></div>
+            <!-- <div id="map"></div> -->
             <button type="submit">Calculate Carbon Footprint</button>
           </form>
         </div>
@@ -219,7 +219,7 @@ async function getCarbonFootprint() {
         headers: {
           "x-rapidapi-host": "carbonfootprint1.p.rapidapi.com",
           "x-rapidapi-key":
-            "f71852c863msh8334498b3ba4aa1p1f19b9jsn15d2dad05b9a",
+            "3d075863femshdf64220b7079af1p1caf4fjsnade9f863b2c2",
         },
       }
     );
@@ -241,7 +241,7 @@ async function getTrees() {
         headers: {
           "x-rapidapi-host": "carbonfootprint1.p.rapidapi.com",
           "x-rapidapi-key":
-            "f71852c863msh8334498b3ba4aa1p1f19b9jsn15d2dad05b9a",
+            "3d075863femshdf64220b7079af1p1caf4fjsnade9f863b2c2",
         },
       }
     );
@@ -360,7 +360,7 @@ onMounted(() => {
 .main-container2 {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 85vw;
   justify-content: space-between;
 }
 

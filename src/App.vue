@@ -357,7 +357,6 @@ html {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
   margin-top: 20px;
 }
 
@@ -367,21 +366,13 @@ html {
 }
 .calc-section {
   background: linear-gradient(#CCE6BB, #BBDFA3);
-  width: 100vw;
-  height: 100vh;
   flex-direction: column;
   align-items: center;
-  padding: 50px;
-}
-.sub-container2 {
-  display: flex;
-  flex-direction: column;
-  width: 85vw;
-  justify-content: center;
-}
+  padding: 80px;
+} 
 
 .form-map-container {
-  padding-top: 50px;
+  padding-top: 30px;
   display: flex;
   justify-content: space-between;
   background-color: #d5a77b;
@@ -442,15 +433,19 @@ select {
   border-radius: 10px;
   cursor: pointer;
   font-size: 2rem;
-  background: linear-gradient(0deg, #a5e27c 0%, #ffaa57 100%);
+  background: linear-gradient(to right, #a5e27c, #ffaa57 100%);
+}
+
+.calc-button:hover {
+  background: linear-gradient(to right, #89b967, #ae7237);
+  color: white;
 }
 
 .output-container {
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: #e8f4e1;
   padding: 20px;
   border-radius: 10px;
-  height: 30vh;
   font-size: 2rem;
   align-items: center;
   justify-content: center;

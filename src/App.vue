@@ -25,7 +25,6 @@
           <h3>Track your carbon footprint and make greener travel choices</h3>
 
           <form @submit.prevent="getCarbonFootprint">
-            <label for="vehicle">Travel Type:</label>
             <div class="grid-container">
               <select v-model="endpoint" id="vehicle" required>
                 <option value="CarbonFootprintFromCarTravel">Car</option>
@@ -127,7 +126,9 @@
               </div>
             </div>
             <!-- <div id="map"></div> -->
-            <button type="submit">Calculate Carbon Footprint</button>
+            <button type="submit" class="calc-button">
+              Calculate Carbon Footprint
+            </button>
           </form>
         </div>
 
@@ -138,12 +139,12 @@
       <!-- Div2: Output Section -->
       <div id="div2" class="output-container">
         <div v-if="carbonFootprint">
-          <h3>Carbon Footprint:</h3>
-          <p>{{ carbonFootprint }} kg CO₂</p>
+          <h3>Your Carbon Footprint is {{ carbonFootprint }} kg CO₂</h3>
+          <!-- <p>{{ carbonFootprint }} kg CO₂</p> -->
         </div>
         <div v-if="trees">
-          <h3>Trees Equivalent:</h3>
-          <p>{{ trees }} trees</p>
+          <h1>That is equivilant to {{ trees }} trees!</h1>
+          <!-- <p>{{ trees }} trees</p> -->
         </div>
       </div>
     </div>
@@ -331,13 +332,6 @@ onMounted(() => {
   border-radius: 20px;
 }
 
-#map {
-  max-width: 500px;
-  height: 250px;
-  margin-top: 20px;
-  border-radius: 30px;
-}
-
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -352,6 +346,7 @@ onMounted(() => {
 .calc-section {
   background: linear-gradient(180deg, #cce6bb 0%, #bbdfa3 100%);
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -361,20 +356,35 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   width: 85vw;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .form-map-container {
+  padding-top: 50px;
   display: flex;
   justify-content: space-between;
   background-color: #d5a77b;
   padding: 20px;
   border-radius: 15px;
 }
+#map {
+  max-width: 700px;
+  max-height: 300px;
+  margin-top: 20px;
+  border-radius: 30px;
+  flex: 1;
+  background-color: #f0f0f0;
+  margin-left: 20px;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+}
 
 .form-container {
   flex: 1;
   max-width: 50%;
+  justify-content: center;
+  align-items: center;
 }
 
 .grid-container {
@@ -392,38 +402,39 @@ select {
   border-radius: 10px;
 }
 
-button {
+.calc-button {
   margin-top: 10px;
-  padding: 10px 20px;
+  padding: 20px 30px;
   background-color: #ffffff;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-}
-
-.map-container {
-  flex: 1;
-  background-color: #f0f0f0;
-  margin-left: 20px;
-  border-radius: 10px;
+  font-size: 1.5rem;
+  background: linear-gradient(0deg, #a5e27c 0%, #ffaa57 100%);
 }
 
 .output-container {
   margin-top: 20px;
-  background-color: #fff;
+  background-color: #e8f4e1;
   padding: 20px;
   border-radius: 10px;
+  height: 30vh;
+  font-size: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
-  font-size: 2rem;
+  text-align: center;
+  font-size: 3rem;
   margin-bottom: 0.5rem;
-  color: #fff;
+  color: black;
 }
 
 h3 {
-  font-size: 1.2rem;
+  text-align: center;
+  font-size: 2rem;
   margin-bottom: 1rem;
-  color: #fff;
+  color: black;
 }
 </style>

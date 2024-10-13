@@ -128,9 +128,7 @@
               </div>
             </div>
             <!-- <div id="map"></div> -->
-            <button type="submit" class="calc-button">
-              Calculate Carbon Footprint
-            </button>
+            <button type="submit" class="calc-button">CALCULATE</button>
           </form>
         </div>
 
@@ -357,7 +355,7 @@ onMounted(() => {
 .calc-section {
   background: linear-gradient(180deg, #cce6bb 0%, #bbdfa3 100%);
   width: 100vw;
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -426,12 +424,12 @@ select {
 
 .calc-button {
   margin-top: 30px;
-  padding: 20px 30px;
-  background-color: #ffffff;
+  padding: 24px 60px;
+  background-color: #46392d;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 2rem;
   background: linear-gradient(0deg, #a5e27c 0%, #ffaa57 100%);
 }
 
@@ -451,6 +449,9 @@ h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
   color: black;
+  font-family: "Ropa Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 h3 {
@@ -458,5 +459,8 @@ h3 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: black;
+  font-family: "Ropa Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 </style>

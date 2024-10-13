@@ -1,79 +1,125 @@
 <template>
-  <div>
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1 class="main-title">
+      <span class="eco">ECO</span><span class="trip">TRIP</span>
+    </h1>
+    <h2 class="subtitle">Travel more green</h2>
+    <p class="subtitle2">
+      Enter origin, destination, and vehicle information <br />
+      to calculate carbon footprint of trip
+    </p>
+    <button @click="scrollToCalculation" class="scroll-button">
+      Calculate
+    </button>
+  </div>
+
+  <!-- Calculation Form -->
+  <div id="calculation-section" class="main-container">
     <form @submit.prevent="getCarbonFootprint">
       <label for="vehicle">Travel Type:</label>
-      <select v-model="endpoint" id="vehicle" required>
-        <option value="CarbonFootprintFromCarTravel">Car</option>
-        <option value="CarbonFootprintFromFlight">Flight</option>
-        <option value="CarbonFootprintFromPublicTransit">Public Transit</option>
-      </select>
-
-      <label v-if="endpoint === 'CarbonFootprintFromCarTravel'" for="carType">Car Type:</label>
-      <select v-if="endpoint === 'CarbonFootprintFromCarTravel'" v-model="carType" id="carType" required>
-        <option value="SmallDieselCar">Small Diesel Car</option>
-        <option value="MediumDieselCar">Medium Diesel Car</option>
-        <option value="LargeDieselCar">Large Diesel Car</option>
-        <option value="MediumHybridCar">Medium Hybrid Car</option>
-        <option value="LargeHybridCar">Large Hybrid Car</option>
-        <option value="MediumLPGCar">Medium LPG Car</option>
-        <option value="LargeLPGCar">Large LPG Car</option>
-        <option value="MediumCNGCar">Medium CNG Car</option>
-        <option value="LargeCNGCar">Large CNG Car</option>
-        <option value="SmallPetrolVan">Small Petrol Van</option>
-        <option value="LargePetrolVan">Large Petrol Van</option>
-        <option value="SmallDieselVan">Small Diesel Van</option>
-        <option value="MediumDieselVan">Medium Diesel Van</option>
-        <option value="LargeDieselVan">Large Diesel Van</option>
-        <option value="LPGVan">LPG Van</option>
-        <option value="CNGVan">CNG Van</option>
-        <option value="SmallPetrolCar">Small Petrol Car</option>
-        <option value="MediumPetrolCar">Medium Petrol Car</option>
-        <option value="LargePetrolCar">Large Petrol Car</option>
-        <option value="SmallMotorBike">Small Motor Bike</option>
-        <option value="MediumMotorBike">Medium Motor Bike</option>
-        <option value="LargeMotorBike">Large Motor Bike</option>
-      </select>
-
-      <label v-if="endpoint === 'CarbonFootprintFromFlight'" for="flightType">Flight Type:</label>
-      <select v-if="endpoint === 'CarbonFootprintFromFlight'" v-model="type" id="flightType" required>
-        <option value="DomesticFlight">Domestic Flight</option>
-        <option value="ShortEconomyClassFlight">Short Economy Class Flight</option>
-        <option value="ShortBusinessClassFlight">Short Business Class Flight</option>
-        <option value="LongEconomyClassFlight">Long Economy Class Flight</option>
-        <option value="LongPremiumClassFlight">Long Premium Class Flight</option>
-        <option value="LongBusinessClassFlight">Long Business Class Flight</option>
-        <option value="LongFirstClassFlight">Long First Class Flight</option>
-      </select>
-
-      <label v-if="endpoint === 'CarbonFootprintFromPublicTransit'" for="transitType">Transit Type:</label>
-      <select v-if="endpoint === 'CarbonFootprintFromPublicTransit'" v-model="type" id="transitType" required>
-        <option value="Taxi">Taxi</option>
-        <option value="ClassicBus">Classic Bus</option>
-        <option value="EcoBus">Eco Bus</option>
-        <option value="Coach">Coach</option>
-        <option value="NationalTrain">National Train</option>
-        <option value="LightRail">Light Rail</option>
-        <option value="Subway">Subway</option>
-        <option value="FerryOnFoot">Ferry On Foot</option>
-        <option value="FerryInCar">Ferry In Car</option>
-      </select>
-
-      <!-- Input fields for origin and destination -->
-      <div>
-        <label for="origin">Origin:</label>
-        <input type="text" id="origin" placeholder="Enter origin" required />
+      <div class="grid-container">
+        <select v-model="endpoint" id="vehicle" required>
+          <option value="CarbonFootprintFromCarTravel">Car</option>
+          <option value="CarbonFootprintFromFlight">Flight</option>
+          <option value="CarbonFootprintFromPublicTransit">
+            Public Transit
+          </option>
+        </select>
+        <select
+          v-if="endpoint === 'CarbonFootprintFromCarTravel'"
+          v-model="carType"
+          id="carType"
+          required
+        >
+          <option value="SmallDieselCar">Small Diesel Car</option>
+          <option value="MediumDieselCar">Medium Diesel Car</option>
+          <option value="LargeDieselCar">Large Diesel Car</option>
+          <option value="MediumHybridCar">Medium Hybrid Car</option>
+          <option value="LargeHybridCar">Large Hybrid Car</option>
+          <option value="MediumLPGCar">Medium LPG Car</option>
+          <option value="LargeLPGCar">Large LPG Car</option>
+          <option value="MediumCNGCar">Medium CNG Car</option>
+          <option value="LargeCNGCar">Large CNG Car</option>
+          <option value="SmallPetrolVan">Small Petrol Van</option>
+          <option value="LargePetrolVan">Large Petrol Van</option>
+          <option value="SmallDieselVan">Small Diesel Van</option>
+          <option value="MediumDieselVan">Medium Diesel Van</option>
+          <option value="LargeDieselVan">Large Diesel Van</option>
+          <option value="LPGVan">LPG Van</option>
+          <option value="CNGVan">CNG Van</option>
+          <option value="SmallPetrolCar">Small Petrol Car</option>
+          <option value="MediumPetrolCar">Medium Petrol Car</option>
+          <option value="LargePetrolCar">Large Petrol Car</option>
+          <option value="SmallMotorBike">Small Motor Bike</option>
+          <option value="MediumMotorBike">Medium Motor Bike</option>
+          <option value="LargeMotorBike">Large Motor Bike</option>
+        </select>
+        <label v-if="endpoint === 'CarbonFootprintFromFlight'" for="flightType"
+          >Flight Type:</label
+        >
+        <select
+          v-if="endpoint === 'CarbonFootprintFromFlight'"
+          v-model="type"
+          id="flightType"
+          required
+        >
+          <option value="DomesticFlight">Domestic Flight</option>
+          <option value="ShortEconomyClassFlight">
+            Short Economy Class Flight
+          </option>
+          <option value="ShortBusinessClassFlight">
+            Short Business Class Flight
+          </option>
+          <option value="LongEconomyClassFlight">
+            Long Economy Class Flight
+          </option>
+          <option value="LongPremiumClassFlight">
+            Long Premium Class Flight
+          </option>
+          <option value="LongBusinessClassFlight">
+            Long Business Class Flight
+          </option>
+          <option value="LongFirstClassFlight">Long First Class Flight</option>
+        </select>
+        <label
+          v-if="endpoint === 'CarbonFootprintFromPublicTransit'"
+          for="transitType"
+          >Transit Type:</label
+        >
+        <select
+          v-if="endpoint === 'CarbonFootprintFromPublicTransit'"
+          v-model="type"
+          id="transitType"
+          required
+        >
+          <option value="Taxi">Taxi</option>
+          <option value="ClassicBus">Classic Bus</option>
+          <option value="EcoBus">Eco Bus</option>
+          <option value="Coach">Coach</option>
+          <option value="NationalTrain">National Train</option>
+          <option value="LightRail">Light Rail</option>
+          <option value="Subway">Subway</option>
+          <option value="FerryOnFoot">Ferry On Foot</option>
+          <option value="FerryInCar">Ferry In Car</option>
+        </select>
+        <div class="grid-item">
+          <label for="origin">Origin:</label>
+          <input type="text" id="origin" placeholder="Enter origin" required />
+        </div>
+        <div class="grid-item">
+          <label for="destination">Destination:</label>
+          <input
+            type="text"
+            id="destination"
+            placeholder="Enter destination"
+            required
+          />
+        </div>
       </div>
-      <div>
-        <label for="destination">Destination:</label>
-        <input type="text" id="destination" placeholder="Enter destination" required />
-      </div>
-
       <div id="map"></div>
-      <!-- Google Map will be rendered here -->
-
       <button type="submit">Calculate Carbon Footprint</button>
     </form>
-
     <div v-if="carbonFootprint">
       <h3>Carbon Footprint:</h3>
       <p>{{ carbonFootprint }} kg CO₂</p>
@@ -97,71 +143,55 @@ const carbonFootprint = ref(null);
 const trees = ref(null);
 
 function initializeMap() {
-  // Create Autocomplete instances for origin and destination
   const originInput = new google.maps.places.Autocomplete(
     document.getElementById("origin")
   );
   const destinationInput = new google.maps.places.Autocomplete(
     document.getElementById("destination")
   );
-
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 40.749933, lng: -73.98633 },
     zoom: 13,
   });
-
   const directionsService = new google.maps.DirectionsService();
-  const directionsRenderer = new google.maps.DirectionsRenderer({
-    map: map,
-  });
+  const directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
 
-  // Function to calculate distance
   function calculateDistance() {
     const originPlace = originInput.getPlace();
     const destinationPlace = destinationInput.getPlace();
-
     if (originPlace && destinationPlace) {
       const request = {
         origin: originPlace.geometry.location,
         destination: destinationPlace.geometry.location,
-        travelMode: endpoint.value === "CarbonFootprintFromPublicTransit" ? "TRANSIT" : "DRIVING",
+        travelMode:
+          endpoint.value === "CarbonFootprintFromPublicTransit"
+            ? "TRANSIT"
+            : "DRIVING",
       };
-
       directionsService.route(request, (result, status) => {
         if (status === "OK") {
           directionsRenderer.setDirections(result);
           const route = result.routes[0].legs[0];
-          distance.value = route.distance.value / 1000; // distance in km
-        } else {
-          console.error("Directions request failed due to " + status);
+          distance.value = route.distance.value / 1000;
         }
       });
     }
   }
-
-  // Listen for changes in place selection
   originInput.addListener("place_changed", calculateDistance);
   destinationInput.addListener("place_changed", calculateDistance);
 }
 
-// Function to calculate carbon footprint and log the distance and vehicle type
 async function getCarbonFootprint() {
-  console.log("Distance:", distance.value ? distance.value : "Not available");
-  console.log("Endpoint:", endpoint.value);
-  
-  // Determine the parameters based on the selected endpoint
-  const params = {
-    distance: distance.value, // Distance in km
-  };
-
-  // Set the vehicle or type based on the selected endpoint
+  const params = { distance: distance.value };
   if (endpoint.value === "CarbonFootprintFromCarTravel") {
-    params.vehicle = carType.value; // For cars, use vehicle type
-  } else if (endpoint.value === "CarbonFootprintFromFlight" || endpoint.value === "CarbonFootprintFromPublicTransit") {
-    params.type = type.value; // For flights and transit, use type
+    params.vehicle = carType.value;
+  } else if (
+    endpoint.value === "CarbonFootprintFromFlight" ||
+    endpoint.value === "CarbonFootprintFromPublicTransit"
+  ) {
+    params.type = type.value;
   }
 
-  // Make API request to get carbon footprint
   try {
     const response = await axios.get(
       `https://carbonfootprint1.p.rapidapi.com/${endpoint.value}`,
@@ -174,33 +204,19 @@ async function getCarbonFootprint() {
         },
       }
     );
-
-    // Update carbon footprint from the API response
-    carbonFootprint.value = response.data.carbonEquivalent; // Adjust based on the actual API response structure
-    console.log("Carbon Footprint:", carbonFootprint.value);
+    carbonFootprint.value = response.data.carbonEquivalent;
   } catch (error) {
     console.error("Error fetching carbon footprint:", error);
   }
-
   await getTrees();
 }
 
-// Function to calculate carbon footprint and log the distance and vehicle type
 async function getTrees() {
-  if (!carbonFootprint.value) return; // Do not proceed if carbon footprint is not available
-
-  console.log("Calculating trees equivalent for:", carbonFootprint.value);
-  
-  // Prepare parameters for the API request
-  const params = {
-    weight: carbonFootprint.value, // Carbon footprint in kg
-    unit: "kg"
-  };
-
-  // Make API request to get the tree equivalent
+  if (!carbonFootprint.value) return;
+  const params = { weight: carbonFootprint.value, unit: "kg" };
   try {
     const response = await axios.get(
-      'https://carbonfootprint1.p.rapidapi.com/TreeEquivalent',
+      "https://carbonfootprint1.p.rapidapi.com/TreeEquivalent",
       {
         params: params,
         headers: {
@@ -210,16 +226,12 @@ async function getTrees() {
         },
       }
     );
-
-    // Update the trees variable from the API response
-    trees.value = response.data.numberOfTrees; // Adjust based on the actual API response structure
-    console.log("Trees Equivalent:", trees.value);
+    trees.value = response.data.numberOfTrees;
   } catch (error) {
     console.error("Error fetching trees equivalent:", error);
   }
 }
 
-// Check if the Google Maps API is loaded, then initialize the map
 function loadGoogleMapsApi() {
   if (typeof google !== "undefined") {
     initializeMap();
@@ -233,15 +245,88 @@ function loadGoogleMapsApi() {
   }
 }
 
+function scrollToCalculation() {
+  const element = document.getElementById("calculation-section");
+  element.scrollIntoView({ behavior: "smooth" });
+}
+
 onMounted(() => {
-  loadGoogleMapsApi(); // Call the function to load the map
+  loadGoogleMapsApi();
 });
 </script>
 
 <style scoped>
+.hero-section {
+  background-color: #e9edc9;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.main-container {
+  background-color: #e9edc9;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.eco {
+  color: #5d9835;
+  font-weight: bold;
+}
+
+.trip {
+  color: #c5803d;
+  font-weight: bold;
+}
+
+.main-title {
+  font-size: 90px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  color: #5d9835;
+  font-weight: bold;
+}
+
+.subtitle2 {
+  font-family: "Ropa Sans", sans-serif;
+  font-size: 45px;
+  color: #c5803d;
+}
+
+.scroll-button {
+  background-color: #c5803d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
 #map {
   width: 100%;
   height: 600px;
   margin-top: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
 }
 </style>
